@@ -98,3 +98,15 @@
 <dl>
 </div>
 
+
+Temas desarrollados en el módulo:
+
+Protocolos de comunicación (MQTT, HTTP, CoAP).
+
+Diseño de arquitectura de red IoT.
+
+Comunicaciones inalámbricas (ZigBee, LoRa, Bluetooth).
+
+Enrutamiento básico y comunicaciones WAN.
+
+JSON y REST como lenguajes de transporte de datos
