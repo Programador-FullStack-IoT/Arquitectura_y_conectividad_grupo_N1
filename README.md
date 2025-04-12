@@ -99,7 +99,7 @@
 </div>
 
 
-Temas desarrollados en el módulo:
+Temas de desarrollado :
 
 Protocolos de comunicación (MQTT, HTTP, CoAP).
 
