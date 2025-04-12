@@ -49,7 +49,7 @@
             </tr>
             <tr>
               <td> Nicolás Barrionuevo </td>
-              <td> NicolasBa27 </td>
+              <td> NicolasB-27 </td>
               <td>
                 <a href="https://github.com/NicolasBa27">
                   <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
