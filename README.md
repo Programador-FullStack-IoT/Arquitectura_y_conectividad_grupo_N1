@@ -1,112 +1,43 @@
-# Arquitectura_y_conectividad_grupo_N1
+# 🌐 Arquitectura y Conectividad - Grupo N1
 
-[![Presentacion.jpg](https://i.postimg.cc/4yHKDMpw/Presentacion.jpg)](https://postimg.cc/N2YfTdJr)
+[![Presentación](https://i.postimg.cc/4yHKDMpw/Presentacion.jpg)](https://postimg.cc/N2YfTdJr)
 
-<h1> Profesor </h1>
-        <table align="center">
-          <thead>
-            <tr>
-              <th>Nombre y Apellido</th>
-              <th>Usuario en GitHub</th>
-              <th>GitHub</th>
-            </tr>
-          </thead>
-          <tbody>
-           <tr>
-              <td> Jorge Elias Morales </td>
-              <td> JorEl057 </td>
-              <td>
-                <a href="https://github.com/JorEl057">
-                  <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
-                </a>
-              </td>
-            </tr>
-        </table>
-  </dd>
-  <dd>
-<dl>
+---
 
-<br>
+## 👨‍🏫 Profesor
 
-<h1> 👩‍💻👨🏼‍💻 Integrantes 👩‍💻👨🏼‍💻 </h1>
-        <table align="center">
-          <thead>
-            <tr>
-              <th>Nombre y Apellido</th>
-              <th>Usuario en GitHub</th>
-              <th>GitHub</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td> Fernando Gimenez Coria </td>
-              <td> FerCbr </td>
-              <td>
-                <a href="https://github.com/FerCbr">
-                  <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td> Nicolás Barrionuevo </td>
-              <td> NicolasB-27 </td>
-              <td>
-                <a href="https://github.com/NicolasBa27">
-                  <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td> Macarena Aylen Carballo </td>
-              <td> MacarenaAC </td>
-              <td>
-                <a href="https://github.com/MacarenaAC">
-                  <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
-                </a>
-              </td>
-            </tr>
-           <tr>
-              <td> Raul Jara </td>
-              <td> r-j28 </td>
-              <td>
-                <a href="https://github.com/r-j28">
-                  <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
-                </a>
-              </td>
-            </tr>
-           <tr>
-              <td> Diego Ezequiel Ares </td>
-              <td>  diegote7 </td>
-              <td>
-                <a href="https://github.com/diegote7">
-                  <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
-                </a>
-              </td>
-            </tr>
-           <tr>
-              <td> Juan Diego González Antoniazzi </td>
-              <td> JDGA1997 </td>
-              <td>
-                <a href="https://github.com/JDGA1997">
-                  <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
-                </a>
-              </td>
-            </tr>
-        </table>
-  </dd>
-  <dd>
-<dl>
-</div>
+| Nombre y Apellido       | Usuario en GitHub | GitHub |
+|-------------------------|-------------------|--------|
+| Jorge Elías Morales     | `@JorEl057`       | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/JorEl057) |
 
+---
 
-Temas de desarrollado :
+## 👨‍💻 Integrantes del Grupo
 
-Protocolos de comunicación (MQTT, HTTP, CoAP).
+| Nombre y Apellido                  | Usuario en GitHub | GitHub |
+|-----------------------------------|-------------------|--------|
+| Fernando Giménez Coria            | `@FerCbr`         | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/FerCbr) |
+| Nicolás Barrionuevo               | `@NicolasB-27`    | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/NicolasB-27) |
+| Macarena Aylen Carballo           | `@MacarenaAC`     | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/MacarenaAC) |
+| Raúl Jara                         | `@r-j28`          | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/r-j28) |
+| Diego Ezequiel Ares               | `@diegote7`       | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/diegote7) |
+| Juan Diego González Antoniazzi   | `@JDGA1997`       | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/JDGA1997) |
 
-Diseño de arquitectura de red IoT.
+---
 
-Comunicaciones inalámbricas (ZigBee, LoRa, Bluetooth).
+## 📚 Temas Desarrollados
 
-Enrutamiento básico y comunicaciones WAN.
+- 🛰️ **Protocolos de comunicación:** MQTT, HTTP, CoAP  
+- 🌐 **Diseño de arquitectura de red IoT**  
+- 📡 **Comunicaciones inalámbricas:** ZigBee, LoRa, Bluetooth  
+- 🛣️ **Enrutamiento básico y comunicaciones WAN**  
+- 📦 **Transporte de datos con JSON y REST**
 
-JSON y REST como lenguajes de transporte de datos
+---
+
+### 🚀 ¡Gracias por visitar nuestro repositorio!
+
+> _Este trabajo forma parte del curso de Arquitectura y Conectividad en sistemas IoT, donde abordamos tecnologías clave en el desarrollo de redes inteligentes y conectividad avanzada._
+
+---
+
