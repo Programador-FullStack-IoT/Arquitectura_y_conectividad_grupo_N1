@@ -1,4 +1,6 @@
-# 🌐 Arquitectura y Conectividad - Grupo N1
+<div align="center">
+  
+# 🌐 Arquitectura y Conectividad - Grupo N°1
 
 [![Presentación](https://i.postimg.cc/4yHKDMpw/Presentacion.jpg)](https://postimg.cc/N2YfTdJr)
 
@@ -27,11 +29,11 @@
 
 ## 📚 Temas Desarrollados
 
-- 🛰️ **Protocolos de comunicación:** MQTT, HTTP, CoAP  
-- 🌐 **Diseño de arquitectura de red IoT**  
-- 📡 **Comunicaciones inalámbricas:** ZigBee, LoRa, Bluetooth  
-- 🛣️ **Enrutamiento básico y comunicaciones WAN**  
-- 📦 **Transporte de datos con JSON y REST**
+💠 🛰️ **Protocolos de comunicación:** MQTT, HTTP, CoAP  
+💠 🌐 **Diseño de arquitectura de red IoT**  
+💠 📡 **Comunicaciones inalámbricas:** ZigBee, LoRa, Bluetooth  
+💠 🛣️ **Enrutamiento básico y comunicaciones WAN**  
+💠 📦 **Transporte de datos con JSON y REST**
 
 ---
 
