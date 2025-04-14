@@ -1,4 +1,4 @@
-![alt text](<../E - Assets/imag 1.jpg>)
+
 
 <h1> Profesor </h1>
         <table align="center">
