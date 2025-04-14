@@ -35,6 +35,8 @@
 
 ---
 
+[![Chat-GPT-Image-14-abr-2025-00-30-22.png](https://i.postimg.cc/mgXWVfsz/Chat-GPT-Image-14-abr-2025-00-30-22.png)](https://postimg.cc/CRq2L2dS)
+
 ### 🚀 ¡Gracias por visitar nuestro repositorio!
 
 > _Este trabajo forma parte del curso de Arquitectura y Conectividad en sistemas IoT, donde abordamos tecnologías clave en el desarrollo de redes inteligentes y conectividad avanzada._
