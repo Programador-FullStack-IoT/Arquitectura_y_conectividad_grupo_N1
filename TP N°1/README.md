@@ -1,6 +1,15 @@
 <div align="center">
-        
-<h1> 👨‍🏫 Profesor </h1>
+
+![imagen](https://github.com/user-attachments/assets/28e70ed9-6f1e-4d98-872d-237112168796)
+
+
+
+<h1> Trabajo Practico N° 1 - Grupo N°1 </h1>
+
+<h2> Módulo I: Protocolo de Comunicaciones
+
+
+<h1> Profesor </h1>
         <table align="center">
           <thead>
             <tr>
@@ -95,3 +104,42 @@
   </dd>
   <dd>
 <dl>
+
+
+
+
+<br>
+
+## Estructura del Proyecto
+
+### A - Requisitos/
+Documentación sobre los requisitos del proyecto.
+
+### B - Investigacion/
+Resultados de la investigación realizada.
+
+### C - Prototipos/
+Prototipos del sistema IoT.
+
+### D - Presentacion/
+Materiales de presentación del proyecto.
+
+### E - assets/
+Recursos y archivos utilizados.
+
+
+<br>
+
+
+# Prácticas de Arquitectura y Conectividad
+Este repositorio contiene el desarrollo de las prácticas individuales y grupales realizadas durante el curso.
+
+## Modalidad de Trabajo
+
+Cada práctica se ha desarrollado en forma individual y grupal segun el requisito del docente y el resultado ha sido subido a este repositorio siguiendo la estructura de monorepositorio establecida por grupo. Cada integrante del grupo ha sido asignado a uno o más problemas (issues), y se ha creado el proyecto correspondiente con la documentación asociada. Los issues han sido asignados a los integrantes para documentar la colaboración de cada alumno.
+
+
+## Requerimiento TP Nro 1
+
+![imagen](https://github.com/user-attachments/assets/a602bd11-88b8-467d-8185-cbac7df5aea6)
+
