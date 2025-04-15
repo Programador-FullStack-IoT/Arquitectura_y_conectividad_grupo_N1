@@ -1,3 +1,5 @@
+![alt text](<../E - Assets/logo.jpg>)
+
 <div align="center">
         
 <h1> 👨‍🏫 Profesor </h1>
