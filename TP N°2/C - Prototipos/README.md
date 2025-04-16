@@ -1,6 +1,6 @@
-![alt text](<../E - Assets/logo.jpg>)
-
 <div align="center">
+
+![alt text](<../E - Assets/logo.jpg>)
         
 <h1> 👨‍🏫 Profesor </h1>
         <table align="center">
@@ -97,3 +97,4 @@
   </dd>
   <dd>
 <dl>
+gg	

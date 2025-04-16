@@ -1,6 +1,8 @@
-![alt text](<../E - Assets/logo.jpg>)
+<div align="center">
 
-<h1> Profesor </h1>
+![alt text](<../E - Assets/logo.jpg>)
+        
+<h1> 👨‍🏫 Profesor </h1>
         <table align="center">
           <thead>
             <tr>
@@ -46,10 +48,11 @@
               </td>
             </tr>
             <tr>
+            <tr>
               <td> Nicolás Barrionuevo </td>
               <td> NicolasB-27 </td>
               <td>
-                <a href="https://github.com/NicolasBa27">
+                <a href="https://github.com/NicolasB-27">
                   <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
                 </a>
               </td>
@@ -94,4 +97,3 @@
   </dd>
   <dd>
 <dl>
-</div>
