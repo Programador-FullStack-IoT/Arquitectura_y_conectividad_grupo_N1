@@ -1,4 +1,4 @@
-<div align="center">
+![alt text](<../E - Assets/ISPC.jpg>)
 
 ![alt text](<../E - Assets/logo.jpg>)
         
