@@ -1,8 +1,4 @@
-<div align="center">
-
-![imagen](https://github.com/user-attachments/assets/28e70ed9-6f1e-4d98-872d-237112168796)
-
-
+![alt text](<E - Assets/ISPC.jpg>)
 
 <h1> Trabajo Practico N° 2 - Grupo N°1 </h1>
 
