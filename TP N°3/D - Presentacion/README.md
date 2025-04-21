@@ -96,6 +96,3 @@
   <dd>
 <dl>
 
-# Video presentación del ejercicio #5 
-
-https://youtu.be/RkaFhC84YxI?feature=shared
