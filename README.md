@@ -39,7 +39,7 @@
 
 [![Chat-GPT-Image-14-abr-2025-00-30-22.png](https://i.postimg.cc/mgXWVfsz/Chat-GPT-Image-14-abr-2025-00-30-22.png)](https://postimg.cc/CRq2L2dS)
 
-## OBJETIVOS:
+## OBJETIVOS
 Los objetivos de la arquitectura y conectividad de sistemas IoT incluyen:
 1. Automatización: los sistemas IoT pueden automatizar procesos y tareas
 repetitivas, lo que permite ahorrar tiempo y recursos.
@@ -57,7 +57,7 @@ entornos.
 
 [![Chat-GPT-Image-21-abr-2025-15-53-13.png](https://i.postimg.cc/MZ4p0ZFp/Chat-GPT-Image-21-abr-2025-15-53-13.png)](https://postimg.cc/xqvQnQQw)
 
-CONTENIDOS:
+## CONTENIDOS
 # UNIDAD I
 Fundamentos y Protocolos de Comunicación. Comunicación Serie. Transmisión de
 datos. Modulaciones y Arquitectura para IoT. Características del tráfico IoT.
