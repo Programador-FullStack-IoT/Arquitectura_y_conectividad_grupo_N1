@@ -55,7 +55,7 @@ permitir una mayor vigilancia y monitoreo de las instalaciones y activos.
 vida al permitir una mayor comodidad y seguridad en el hogar, la oficina y otros
 entornos.
 
-[![Chat-GPT-Image-21-abr-2025-15-53-13.png](https://i.postimg.cc/MZ4p0ZFp/Chat-GPT-Image-21-abr-2025-15-53-13.png)](https://postimg.cc/xqvQnQQw)
+![imagen1](https://github.com/user-attachments/assets/dfea9cdf-97cf-489d-92c4-d5a3bb885163)
 
 ## CONTENIDOS
 # UNIDAD I
