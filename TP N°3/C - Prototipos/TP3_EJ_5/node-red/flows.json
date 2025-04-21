@@ -1,0 +1,18 @@
+[
+    {
+        "id": "func_control_extractor",
+        "type": "function",
+        "z": "aa7d5343343dd6c6",
+        "name": "Control automático extractor",
+        "func": "let co2 = parseFloat(msg.payload);\nif (co2 > 1000) {\n    return { payload: \"ON\" };\n} else {\n    return { payload: \"OFF\" };\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 680,
+        "y": 220,
+        "wires": [
+            [
+                "mqtt_control_out"
+            ]
+        ]
+    }
+]
