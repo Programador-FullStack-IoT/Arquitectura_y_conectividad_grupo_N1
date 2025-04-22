@@ -1,0 +1,37 @@
+{
+    "cliente": {
+      "nombre": "Juan Pérez",
+      "telefono": "123456789",
+      "direccion": "Calle Falsa 123"
+    },
+    "pedido": [
+      {
+        "tipo": "Pepperoni",
+        "tamano": "Grande",
+        "precio": 12.99
+      },
+      {
+        "tipo": "Hawaiana",
+        "tamano": "Mediana",
+        "precio": 10.50
+      },
+      {
+        "tipo": "Vegetariana",
+        "tamano": "Grande",
+        "precio": 11.75
+      },
+      {
+        "tipo": "Cuatro Quesos",
+        "tamano": "Mediana",
+        "precio": 10.99
+      },
+      {
+        "tipo": "Mexicana",
+        "tamano": "Grande",
+        "precio": 13.25
+      }
+    ],
+    "metodo_pago": "Efectivo",
+    "total": 59.48
+  }
+  
