@@ -2,37 +2,486 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Monitor MQTT ESP32</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230ea5e9'><path d='M15 12.3a2.3 2.3 0 1 1-4.6 0 2.3 2.3 0 0 1 4.6 0zm1.2-3.4A6 6 0 0 0 12 7.5a6 6 0 0 0-4.2 1.4 6 6 0 0 0 0 8.4 6 6 0 0 0 8.4 0 6 6 0 0 0 0-8.4z'/></svg>" />
   <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.min.css">
   <style>
-    body { font-family: sans-serif; text-align: center; padding: 40px; }
-    .dato { font-size: 2rem; margin: 10px 0; }
+    :root {
+      --primary: #0ea5e9;
+      --secondary: #6366f1;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #94a3b8;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f1f5f9;
+      color: var(--dark);
+      padding: 0;
+      margin: 0;
+      min-height: 100vh;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+      pointer-events: none;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .logo img {
+      width: 48px;
+      height: 48px;
+    }
+    
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      color: var(--gray);
+    }
+    
+    .card-header i {
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+    
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    
+    .card-value {
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 1rem 0;
+      color: var(--dark);
+      transition: color 0.3s;
+    }
+    
+    .temp-value.hot {
+      color: var(--danger);
+    }
+    
+    .temp-value.cold {
+      color: var(--primary);
+    }
+    
+    .hum-value.dry {
+      color: var(--warning);
+    }
+    
+    .hum-value.humid {
+      color: var(--success);
+    }
+    
+    .gauge {
+      width: 100%;
+      height: 10px;
+      background-color: #e2e8f0;
+      border-radius: 5px;
+      margin-top: 1rem;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .gauge-fill {
+      height: 100%;
+      transition: width 0.5s ease-in-out, background-color 0.5s;
+      border-radius: 5px;
+    }
+    
+    .temp-gauge .gauge-fill {
+      background: linear-gradient(90deg, #3b82f6, #ef4444);
+    }
+    
+    .hum-gauge .gauge-fill {
+      background: linear-gradient(90deg, #e2e8f0, #0ea5e9);
+    }
+    
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      background-color: white;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+    
+    .status-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--gray);
+    }
+    
+    .status-indicator.connected {
+      background-color: var(--success);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+    }
+    
+    .status-indicator.connecting {
+      background-color: var(--warning);
+      animation: pulse 1.5s infinite;
+    }
+    
+    .status-indicator.error {
+      background-color: var(--danger);
+    }
+    
+    .status-text {
+      font-size: 0.875rem;
+      color: var(--gray);
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--gray);
+      font-size: 0.875rem;
+    }
+    
+    @keyframes pulse {
+      0% { opacity: 0.5; }
+      50% { opacity: 1; }
+      100% { opacity: 0.5; }
+    }
+    
+    @media (max-width: 768px) {
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+      
+      .card-value {
+        font-size: 2.5rem;
+      }
+    }
+    
+    .data-update {
+      animation: highlight 1s ease-out;
+    }
+    
+    @keyframes highlight {
+      0% { background-color: rgba(14, 165, 233, 0.2); }
+      100% { background-color: transparent; }
+    }
   </style>
 </head>
 <body>
-  <h1>Monitor DHT11 - ESP32 via MQTT</h1>
-  <div class="dato">Temperatura: <span id="temp">--</span> °C</div>
-  <div class="dato">Humedad: <span id="hum">--</span> %</div>
-  <div id="estado">Conectando al broker MQTT...</div>
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTAgMTNhNSA1IDAgMCAwIDcuNTQgMC41NGwzLTNhNSA1IDAgMCAwLTcuMDctNy4wN2wtMS43MiAxLjcxIi8+PHBhdGggZD0iTTE0IDExYTUgNSAwIDAgMC03LjU0LS41NGwtMyAzYTUgNSAwIDAgMCA3LjA3IDcuMDdsMS43MS0xLjcxIi8+PC9zdmc+" alt="Logo">
+        <h1>Monitor DHT11 - ESP32</h1>
+      </div>
+      <p>Sistema de monitoreo en tiempo real vía MQTT</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <div class="status">
+      <div id="status-indicator" class="status-indicator connecting"></div>
+      <div id="estado" class="status-text">Conectando al broker MQTT...</div>
+    </div>
+    
+    <div class="dashboard">
+      <div class="card">
+        <div class="card-header">
+          <i class="lucide lucide-thermometer"></i>
+          <h2 class="card-title">Temperatura</h2>
+        </div>
+        <div id="temp-value" class="card-value temp-value">--</div>
+        <div class="card-unit">Grados Celsius (°C)</div>
+        <div class="gauge temp-gauge">
+          <div id="temp-gauge" class="gauge-fill" style="width: 0%"></div>
+        </div>
+        <div class="gauge-labels">
+          <div class="d-flex justify-content-between mt-1">
+            <small>0°C</small>
+            <small>50°C</small>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <i class="lucide lucide-droplets"></i>
+          <h2 class="card-title">Humedad</h2>
+        </div>
+        <div id="hum-value" class="card-value hum-value">--</div>
+        <div class="card-unit">Porcentaje (%)</div>
+        <div class="gauge hum-gauge">
+          <div id="hum-gauge" class="gauge-fill" style="width: 0%"></div>
+        </div>
+        <div class="gauge-labels">
+          <div class="d-flex justify-content-between mt-1">
+            <small>0%</small>
+            <small>100%</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-header">
+        <i class="lucide lucide-activity"></i>
+        <h2 class="card-title">Historial de Lecturas</h2>
+      </div>
+      <canvas id="historyChart" width="400" height="200"></canvas>
+    </div>
+  </div>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>Monitor MQTT ESP32 &copy; 2025 | Desarrollado por el Grupo N°1 - Arquitectura y Conectividad - TST - IPSC <i class="lucide lucide-heart" style="color: #ef4444;"></i></p>
+    </div>
+  </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
+    // Elementos DOM
+    const tempValue = document.getElementById("temp-value");
+    const humValue = document.getElementById("hum-value");
+    const tempGauge = document.getElementById("temp-gauge");
+    const humGauge = document.getElementById("hum-gauge");
+    const statusIndicator = document.getElementById("status-indicator");
+    const statusText = document.getElementById("estado");
+    
+    // Configuración del gráfico
+    const ctx = document.getElementById('historyChart').getContext('2d');
+    const historyChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [],
+        datasets: [
+          {
+            label: 'Temperatura (°C)',
+            data: [],
+            borderColor: '#ef4444',
+            backgroundColor: 'rgba(239, 68, 68, 0.1)',
+            tension: 0.4,
+            fill: true
+          },
+          {
+            label: 'Humedad (%)',
+            data: [],
+            borderColor: '#0ea5e9',
+            backgroundColor: 'rgba(14, 165, 233, 0.1)',
+            tension: 0.4,
+            fill: true
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        interaction: {
+          mode: 'index',
+          intersect: false,
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            suggestedMax: 100
+          }
+        },
+        animation: {
+          duration: 750
+        }
+      }
+    });
+    
+    // Historial de datos
+    const maxDataPoints = 10;
+    const tempHistory = [];
+    const humHistory = [];
+    const timeLabels = [];
+    
+    // Función para actualizar el gráfico
+    function updateChart(temp, hum) {
+      const now = new Date();
+      const timeStr = now.getHours().toString().padStart(2, '0') + ':' + 
+                      now.getMinutes().toString().padStart(2, '0') + ':' + 
+                      now.getSeconds().toString().padStart(2, '0');
+      
+      timeLabels.push(timeStr);
+      tempHistory.push(temp);
+      humHistory.push(hum);
+      
+      // Mantener solo los últimos N puntos
+      if (timeLabels.length > maxDataPoints) {
+        timeLabels.shift();
+        tempHistory.shift();
+        humHistory.shift();
+      }
+      
+      historyChart.data.labels = timeLabels;
+      historyChart.data.datasets[0].data = tempHistory;
+      historyChart.data.datasets[1].data = humHistory;
+      historyChart.update();
+    }
+    
+    // Función para actualizar los indicadores visuales
+    function updateIndicators(temp, hum) {
+      // Actualizar valores
+      tempValue.textContent = temp;
+      humValue.textContent = hum;
+      
+      // Añadir clase de animación
+      tempValue.classList.add('data-update');
+      humValue.classList.add('data-update');
+      
+      // Quitar clase después de la animación
+      setTimeout(() => {
+        tempValue.classList.remove('data-update');
+        humValue.classList.remove('data-update');
+      }, 1000);
+      
+      // Actualizar medidores
+      const tempPercent = Math.min(Math.max(temp / 50 * 100, 0), 100);
+      const humPercent = Math.min(Math.max(hum, 0), 100);
+      
+      tempGauge.style.width = `${tempPercent}%`;
+      humGauge.style.width = `${humPercent}%`;
+      
+      // Actualizar clases de color según valores
+      tempValue.classList.remove('hot', 'cold');
+      humValue.classList.remove('dry', 'humid');
+      
+      if (temp > 30) {
+        tempValue.classList.add('hot');
+      } else if (temp < 15) {
+        tempValue.classList.add('cold');
+      }
+      
+      if (hum < 30) {
+        humValue.classList.add('dry');
+      } else if (hum > 70) {
+        humValue.classList.add('humid');
+      }
+    }
+    
+    // Conexión MQTT
     const client = mqtt.connect("wss://test.mosquitto.org:8081");
-
+    let reconnectAttempts = 0;
+    const maxReconnectAttempts = 5;
+    
     client.on("connect", () => {
-      document.getElementById("estado").textContent = "Conectado a test.mosquitto.org";
+      statusIndicator.className = "status-indicator connected";
+      statusText.textContent = "Conectado a test.mosquitto.org";
       client.subscribe("iot/esp32/dht11");
+      reconnectAttempts = 0;
     });
-
+    
     client.on("message", (topic, message) => {
-      const data = JSON.parse(message.toString());
-      document.getElementById("temp").textContent = data.temperatura;
-      document.getElementById("hum").textContent = data.humedad;
+      try {
+        const data = JSON.parse(message.toString());
+        
+        if (data.temperatura !== undefined && data.humedad !== undefined) {
+          const temp = parseFloat(data.temperatura);
+          const hum = parseFloat(data.humedad);
+          
+          updateIndicators(temp, hum);
+          updateChart(temp, hum);
+        }
+      } catch (error) {
+        console.error("Error al procesar el mensaje:", error);
+      }
     });
-
+    
     client.on("error", (err) => {
       console.error("MQTT error:", err);
-      document.getElementById("estado").textContent = "Error de conexión MQTT";
+      statusIndicator.className = "status-indicator error";
+      statusText.textContent = "Error de conexión MQTT";
     });
+    
+    client.on("offline", () => {
+      statusIndicator.className = "status-indicator connecting";
+      statusText.textContent = "Desconectado. Intentando reconectar...";
+      
+      reconnectAttempts++;
+      if (reconnectAttempts > maxReconnectAttempts) {
+        statusIndicator.className = "status-indicator error";
+        statusText.textContent = "Error: No se pudo reconectar después de varios intentos";
+      }
+    });
+    
+    client.on("reconnect", () => {
+      statusIndicator.className = "status-indicator connecting";
+      statusText.textContent = "Reconectando...";
+    });
+    
+    // Datos de ejemplo para mostrar mientras no hay conexión
+    setTimeout(() => {
+      if (tempValue.textContent === "--") {
+        // Simular datos si no hay conexión después de 3 segundos
+        updateIndicators(23.5, 45);
+        updateChart(23.5, 45);
+        
+        // Mostrar mensaje de datos de ejemplo
+        const statusMsg = document.createElement('div');
+        statusMsg.className = 'alert alert-warning mt-3';
+        statusMsg.innerHTML = '<i class="lucide lucide-alert-circle"></i> Mostrando datos de ejemplo. Esperando conexión real...';
+        document.querySelector('.status').after(statusMsg);
+      }
+    }, 3000);
   </script>
 </body>
 </html>
