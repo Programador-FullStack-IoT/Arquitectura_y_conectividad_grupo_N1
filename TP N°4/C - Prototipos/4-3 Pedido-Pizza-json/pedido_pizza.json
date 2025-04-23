@@ -1,22 +1,22 @@
 {
     "cliente": {
-      "nombre": "Juan Pérez",
-      "telefono": "123456789",
-      "direccion": "Calle Falsa 123"
+      "nombre": "Juan Reyes",
+      "telefono": "3514567682",
+      "direccion": "Bulevar San Juan 473"
     },
     "pedido": [
       {
-        "tipo": "Pepperoni",
+        "tipo": "Muzzarella",
         "tamano": "Grande",
         "precio": 12.99
       },
       {
-        "tipo": "Hawaiana",
+        "tipo": "Napolitana",
         "tamano": "Mediana",
         "precio": 10.50
       },
       {
-        "tipo": "Vegetariana",
+        "tipo": "Calabreza",
         "tamano": "Grande",
         "precio": 11.75
       },
@@ -26,7 +26,7 @@
         "precio": 10.99
       },
       {
-        "tipo": "Mexicana",
+        "tipo": "Fugazzeta",
         "tamano": "Grande",
         "precio": 13.25
       }
