@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Monitor MQTT ESP32</title>
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 40px; }
+    .dato { font-size: 2rem; margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <h1>Monitor DHT11 - ESP32 via MQTT</h1>
+  <div class="dato">Temperatura: <span id="temp">--</span> °C</div>
+  <div class="dato">Humedad: <span id="hum">--</span> %</div>
+  <div id="estado">Conectando al broker MQTT...</div>
+
+  <script>
+    const client = mqtt.connect("wss://test.mosquitto.org:8081");
+
+    client.on("connect", () => {
+      document.getElementById("estado").textContent = "Conectado a test.mosquitto.org";
+      client.subscribe("iot/esp32/dht11");
+    });
+
+    client.on("message", (topic, message) => {
+      const data = JSON.parse(message.toString());
+      document.getElementById("temp").textContent = data.temperatura;
+      document.getElementById("hum").textContent = data.humedad;
+    });
+
+    client.on("error", (err) => {
+      console.error("MQTT error:", err);
+      document.getElementById("estado").textContent = "Error de conexión MQTT";
+    });
+  </script>
+</body>
+</html>
