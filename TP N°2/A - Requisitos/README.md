@@ -1,6 +1,4 @@
-![alt text](<../../TP N°1/E - Assets/ISPC.jpg>)
-
-![alt text](<../E - Assets/logo.jpg>)
+![alt text](<../E - Assets/ISPC.jpg>)
         
 <h1> 👨‍🏫 Profesor </h1>
         <table align="center">
