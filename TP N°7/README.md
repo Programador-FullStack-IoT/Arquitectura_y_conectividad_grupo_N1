@@ -141,4 +141,4 @@ Cada práctica se ha desarrollado en forma individual y grupal segun el requisit
 
 ## Requerimiento TP Nro 7
 
-![alt text](<Actividad n7.jpg>)
+![image](https://github.com/user-attachments/assets/de79a6cb-3282-49f8-80de-37b22840cd4a)
