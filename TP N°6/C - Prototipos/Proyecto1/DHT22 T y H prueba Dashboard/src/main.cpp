@@ -1,8 +1,8 @@
 #include <DHT.h>
 #include <BluetoothSerial.h>  
 
-#define DHTPIN 15               // Pin conectado al DHT22 
-#define DHTTYPE DHT22           // Tipo de sensor DHT22
+#define DHTPIN 32             // Pin conectado al DHT11 
+#define DHTTYPE DHT11           // Tipo de sensor DHT11
 
 #define LED_HUMEDAD 27          // Pin del LED de humedad 
 #define LED_TEMPERATURA 25      // Pin del LED de temperatura 
@@ -21,13 +21,14 @@ void setup() {
 }
 
 void loop() {
-  // Leer datos del sensor DHT22
+  delay(2000);
+  // Leer datos del sensor DHT11
   float humedad = dht.readHumidity();
   float temperatura = dht.readTemperature();
 
   // Verificar si la lectura fue exitosa
   if (isnan(humedad) || isnan(temperatura)) {
-    Serial.println("Error al leer del sensor DHT22");
+    Serial.println("Error al leer del sensor DHT11");
     return;
   }
 
