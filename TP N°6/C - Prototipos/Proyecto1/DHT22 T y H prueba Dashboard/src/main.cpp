@@ -1,14 +1,11 @@
 #include <DHT.h>
-#include <BluetoothSerial.h>  // Biblioteca para Bluetooth clásico en ESP32
+#include <BluetoothSerial.h>  
 
-#define DHTPIN 15               // Pin conectado al DHT22 (según JSON)
+#define DHTPIN 15               // Pin conectado al DHT22 
 #define DHTTYPE DHT22           // Tipo de sensor DHT22
 
-#define POT_HUMEDAD 35          // Pin del potenciómetro de humedad (según JSON)
-#define POT_TEMPERATURA 34      // Pin del potenciómetro de temperatura (según JSON)
-
-#define LED_HUMEDAD 27          // Pin del LED de humedad (según JSON)
-#define LED_TEMPERATURA 25      // Pin del LED de temperatura (según JSON)
+#define LED_HUMEDAD 27          // Pin del LED de humedad 
+#define LED_TEMPERATURA 25      // Pin del LED de temperatura 
 
 DHT dht(DHTPIN, DHTTYPE);
 BluetoothSerial SerialBT;  // Objeto para la comunicación Bluetooth
@@ -24,13 +21,15 @@ void setup() {
 }
 
 void loop() {
-  // Leer potenciómetros
-  int potHum = analogRead(POT_HUMEDAD);    // Leer el potenciómetro de humedad
-  int potTemp = analogRead(POT_TEMPERATURA);  // Leer el potenciómetro de temperatura
+  // Leer datos del sensor DHT22
+  float humedad = dht.readHumidity();
+  float temperatura = dht.readTemperature();
 
-  // Escalar valores
-  float humedad = map(potHum, 0, 4095, 0, 100);  // Mapear el valor de humedad a un rango de 0 a 100
-  float temperatura = map(potTemp, 0, 4095, 0, 50);  // Mapear el valor de temperatura a un rango de 0 a 50
+  // Verificar si la lectura fue exitosa
+  if (isnan(humedad) || isnan(temperatura)) {
+    Serial.println("Error al leer del sensor DHT22");
+    return;
+  }
 
   // Mostrar por consola
   Serial.print("Humedad: ");
@@ -47,11 +46,11 @@ void loop() {
 
   // Control del LED de humedad
   if (humedad <= 30) {
-    digitalWrite(LED_HUMEDAD, LOW);  // LED apagado si humedad es menor o igual a 30%
+    digitalWrite(LED_HUMEDAD, LOW);
   } else if (humedad <= 60) {
-    digitalWrite(LED_HUMEDAD, HIGH);  // LED encendido si humedad está entre 30% y 60%
+    digitalWrite(LED_HUMEDAD, HIGH);
   } else {
-    digitalWrite(LED_HUMEDAD, HIGH);  // LED parpadeante si humedad es mayor a 60%
+    digitalWrite(LED_HUMEDAD, HIGH);
     delay(200);
     digitalWrite(LED_HUMEDAD, LOW);
     delay(200);
@@ -59,11 +58,11 @@ void loop() {
 
   // Control del LED de temperatura
   if (temperatura <= 24) {
-    digitalWrite(LED_TEMPERATURA, LOW);  // LED apagado si temperatura es menor o igual a 24°C
+    digitalWrite(LED_TEMPERATURA, LOW);
   } else if (temperatura <= 30) {
-    digitalWrite(LED_TEMPERATURA, HIGH);  // LED encendido si temperatura está entre 24°C y 30°C
+    digitalWrite(LED_TEMPERATURA, HIGH);
   } else {
-    digitalWrite(LED_TEMPERATURA, HIGH);  // LED parpadeante si temperatura es mayor a 30°C
+    digitalWrite(LED_TEMPERATURA, HIGH);
     delay(200);
     digitalWrite(LED_TEMPERATURA, LOW);
     delay(200);
