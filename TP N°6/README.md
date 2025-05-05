@@ -57,7 +57,7 @@
             </tr>
             <tr>
             <tr>
-              <td> Nicolás Barrionuevo </td>
+              <td> Nicolás Nahuel Barrionuevo </td>
               <td> NicolasB-27 </td>
               <td>
                 <a href="https://github.com/NicolasB-27">
@@ -75,7 +75,7 @@
               </td>
             </tr>
            <tr>
-              <td> Raul Jara </td>
+              <td> Raul Antonio Jara </td>
               <td> r-j28 </td>
               <td>
                 <a href="https://github.com/r-j28">
