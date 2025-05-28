@@ -1,6 +1,6 @@
 <div align="center">
   
-# 🌐 Arquitectura y Conectividad - Grupo N°1
+# 🌐 Arquitectura y Conectividad - Grupo Plata
 
 [![Presentación](https://i.postimg.cc/4yHKDMpw/Presentacion.jpg)](https://postimg.cc/N2YfTdJr)
 
